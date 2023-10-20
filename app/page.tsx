@@ -14,9 +14,9 @@ export default function Home() {
         body: JSON.stringify(data),
       })
       const resData = await res.json();
-      console.log(resData);
     } catch (error) {
       console.log(error);
+      alert("Something Bad Happened!");
     }
   }
   return (

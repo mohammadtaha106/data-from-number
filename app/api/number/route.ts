@@ -14,7 +14,6 @@ export const POST = async (req: Request) => {
 
 
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: "Number is not valid" }, { status: 400 })
   }
   return NextResponse.json({ error: "Something Bad Happend :(" }, { status: 400 })
