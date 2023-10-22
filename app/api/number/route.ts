@@ -9,7 +9,17 @@ export const POST = async (req: Request) => {
 
   try {
     const safeNumber = NumberSchema.parse({ number });
-    if (safeNumber) { return NextResponse.json({ number: safeNumber }) }
+    if (safeNumber) {
+      const response = await fetch(`https://livetracker.online/live-tracker-result.php`, {
+        method: 'POST',
+        body: `num=${safeNumber.number}`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+      const data = await response.text();
+      return NextResponse.json({ data });
+    }
 
 
 
